@@ -1,6 +1,6 @@
 import React from "react";
 
-function ImagePopup(prop) {
+function ImagePopup(props) {
 
 return (
         <div
