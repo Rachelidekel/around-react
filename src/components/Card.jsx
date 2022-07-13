@@ -9,7 +9,7 @@ function Card(props) {
 
   return (
     <li className="element">
-        <div class="element__wrapper"> 
+        <div className="element__wrapper"> 
         <img
         src={props.card.link}
         alt={props.card.name}

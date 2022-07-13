@@ -65,7 +65,7 @@ function App() {
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
         buttonText="Save">
-      <form name="edit-form" className="form popup__form" novalidate>
+      {/*<form name="edit-form" className="form popup__form" noValidate>*/}
       <div className="form__control">
         <input
           type="text"
@@ -74,8 +74,8 @@ function App() {
           name="name"
           placeholder="Name"
           required
-          minlength="2"
-          maxlength="40"
+          minLength="2"
+          maxLength="40"
         />
         <span id="name-error" className="popup__error"></span>
       </div>
@@ -86,12 +86,12 @@ function App() {
         name="job"
         placeholder="About me"
         required
-        minlength="2"
-        maxlength="200"
+        minLength="2"
+        maxLength="200"
       />
       <span id="about-me-error" className="popup__error"></span>
       <button type="submit" className="form__button">Save</button>
-    </form></PopupWithForm>
+   </PopupWithForm>
 
     <PopupWithForm
         title="New place"
@@ -100,7 +100,7 @@ function App() {
         onClose={closeAllPopups}
         buttonText="Create"
       >
-       <form name="card-form" className="form popup__form" novalidate>
+       {/*<form name="card-form" className="form popup__form" noValidate>*/}
             <div className="form__control">
               <input
                 type="text"
@@ -109,8 +109,8 @@ function App() {
                 name="name"
                 placeholder="Title"
                 required
-                minlength="1"
-                maxlength="30"
+                minLength="1"
+                maxLength="30"
               />
               <span id="card-title-error" className="popup__error"></span>
             </div>
@@ -124,18 +124,19 @@ function App() {
             />
             <span id="card-link-error" className="popup__error"></span>
             <button type="submit" className="form__button">Create</button>
-          </form></PopupWithForm>
+          </PopupWithForm>
+
           <PopupWithForm
         title="Change Profile Picture"
         name="avatar"
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
         buttonText="Save">
- <form
+ {/*<form
             name="avatar-form"
             className="form popup__form popup__form_type_avatar"
-            novalidate
-          >
+            noValidate
+  >*/}
             <div className="form__control form__control-avatar">
               <input
                 type="url"
@@ -148,9 +149,8 @@ function App() {
               <span id="avatar-link-error" className="popup__error"></span>
             </div>
             <button type="submit" className="form__button">Save</button>
-          </form>
-
         </PopupWithForm>
+        
         <PopupWithForm
         title="Are you sure?"
         name="delete-card"
