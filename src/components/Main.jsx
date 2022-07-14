@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { api } from "../utils/Api";
 import Card from "./Card";
+import pen from "../images/Vector_pen.svg"
+import plus from "../images/Vector_plus.svg"
 
 function Main(props)  {
   const [userName, setUserName] = useState("");
@@ -32,10 +34,9 @@ function Main(props)  {
   return (
     <main className="content">
       <section className="profile">
-      <div className="profile__avatar">
+      <div className="profile__avatar"  onClick={props.onEditAvatarClick}>
         <div
-          className="profile__avatar-image"
-          onClick={props.onEditAvatarClick}
+          className="profile__avatar-image" 
         >
           <img
             src={userAvatar}
@@ -50,17 +51,26 @@ function Main(props)  {
             <h1 className="profile__title-name">{userName}</h1>
             <button
               className="profile__open-button"
-              type="button"
-              onClick={props.onEditProfileClick}
-            ></button>
+              type="button" onClick={props.onEditProfileClick}  >
+<img
+                  src={pen}
+                  alt="icon of a pen"
+                  className="profile__open-icon"  
+                />
+             
+            </button>
           </div>
           <p className="profile__subtitle-job">{userDescription}</p>
         </div>
         <button
           className="profile__add-button"
-          type="button"
-          onClick={props.onAddPlaceClick}
-        ></button>
+          type="button" onClick={props.onAddPlaceClick}
+        > <img
+        src={plus}
+        alt="icon of a plus"
+        className="profile__add-icon" 
+      />
+        </button>
       </section>
       <section className="elements">
         <ul className="elements__list">
@@ -70,6 +80,7 @@ function Main(props)  {
                 card={card}
                 key={card._id}
                 onCardClick={props.onCardClick}
+                onDeleteClick={props.onDeleteClick}
               />
             );
           })}

@@ -15,20 +15,21 @@ function App() {
     name: "",
     link: "",
   });
+  const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
 
-  const handleEditAvatarClick = () => {
+function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   };
 
-  const handleEditProfileClick = () => {
+  function handleEditProfileClick()  {
     setIsEditProfilePopupOpen(true);
   };
 
-  const handleAddPlaceClick = () => {
+ function handleAddPlaceClick()  {
     setIsAddPlacePopupOpen(true);
   };
 
-  const handleCardClick = (card) => {
+  function handleCardClick(card) {
     setIsImagePreviewOpen(true);
     setSelectedCard({
       name: card.name,
@@ -36,16 +37,21 @@ function App() {
     });
   };
 
-  const closeAllPopups = () => {
+ const handleDeleteClick = () => {
+    setIsDeletePopupOpen(true)
+  }
+
+  function closeAllPopups() {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsImagePreviewOpen(false);
-    setSelectedCard({
+    setIsDeletePopupOpen(false);
+  /*setSelectedCard({
       name: "",
       link: "",
-    });
-  };
+    });*/
+  }
 
 
   return (
@@ -57,6 +63,7 @@ function App() {
       onAddPlaceClick={handleAddPlaceClick}
       onEditAvatarClick={handleEditAvatarClick}
       onCardClick={handleCardClick}
+      onDeleteClick={handleDeleteClick}
        />
       <Footer />
       <PopupWithForm
@@ -65,7 +72,7 @@ function App() {
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
         buttonText="Save">
-      {/*<form name="edit-form" className="form popup__form" noValidate>*/}
+     
       <div className="form__control">
         <input
           type="text"
@@ -90,7 +97,7 @@ function App() {
         maxLength="200"
       />
       <span id="about-me-error" className="popup__error"></span>
-      <button type="submit" className="form__button">Save</button>
+     
    </PopupWithForm>
 
     <PopupWithForm
@@ -100,7 +107,7 @@ function App() {
         onClose={closeAllPopups}
         buttonText="Create"
       >
-       {/*<form name="card-form" className="form popup__form" noValidate>*/}
+       
             <div className="form__control">
               <input
                 type="text"
@@ -123,7 +130,7 @@ function App() {
               required
             />
             <span id="card-link-error" className="popup__error"></span>
-            <button type="submit" className="form__button">Create</button>
+           
           </PopupWithForm>
 
           <PopupWithForm
@@ -132,11 +139,7 @@ function App() {
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
         buttonText="Save">
- {/*<form
-            name="avatar-form"
-            className="form popup__form popup__form_type_avatar"
-            noValidate
-  >*/}
+ 
             <div className="form__control form__control-avatar">
               <input
                 type="url"
@@ -148,22 +151,21 @@ function App() {
               />
               <span id="avatar-link-error" className="popup__error"></span>
             </div>
-            <button type="submit" className="form__button">Save</button>
+           
         </PopupWithForm>
         
         <PopupWithForm
         title="Are you sure?"
-        name="delete-card"
-        buttonText="Yes"
-      />
-
+        name="delete-form"
+        isOpen={isDeletePopupOpen}
+        onClose={closeAllPopups}
+        buttonText="Yes"/>
+          
       <ImagePopup
         card={selectedCard}
         isOpen={isImagePreviewOpen}
         onClose={closeAllPopups}
       />
-   
-
    </div>
    </> 
   );

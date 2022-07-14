@@ -1,4 +1,5 @@
 import React from "react";
+import close from '../images/Close_Icon.svg';
 
 function PopupWithForm(props) {
     return (
@@ -10,17 +11,22 @@ function PopupWithForm(props) {
 <div className="popup__container">
         <button
           className="popup__close-button"
-          type="button"
-          onClick={props.onClose}
-        ></button>
+          type="button">
+             <img
+              src={close}
+              alt="icon of x"
+              className="popup__close-icon popup__close-icon_image"  onClick={props.onClose}
+            /> 
+         
+        </button>
         <h2 className="popup__title">{props.title}</h2>
-        <form action="submit" className="form popup__form" name={props.name}>
+        <form action="submit" className="form popup__form" name={props.name} noValidate>
           {props.children}
           <div className="form__control">
+          </div>
             <button className="form__button" type="submit">
               {props.buttonText}
             </button>
-          </div>
         </form>
       </div>
     </div>
