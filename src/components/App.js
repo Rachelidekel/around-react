@@ -47,10 +47,6 @@ function handleEditAvatarClick() {
     setIsEditProfilePopupOpen(false);
     setIsImagePreviewOpen(false);
     setIsDeletePopupOpen(false);
-  /*setSelectedCard({
-      name: "",
-      link: "",
-    });*/
   }
 
 
