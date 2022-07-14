@@ -7,6 +7,6 @@ function Header() {
       <img src={logo} alt="Around The U.S." className="logo" />
     </header>
   );
-};
+}
 
 export default Header;

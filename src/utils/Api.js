@@ -5,10 +5,11 @@ class Api {
   }
 
   _customFetch = (url, headers) => {
-    return fetch(url, headers)
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-    }
- 
+    return fetch(url, headers).then((res) =>
+      res.ok ? res.json() : Promise.reject(res.statusText)
+    );
+  };
+
   getInitialCards() {
     return this._customFetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
