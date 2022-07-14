@@ -23,7 +23,7 @@ function Card(props) {
       />
       <button
         type="button"
-        className="element__delete-button" onClick={props.handleDeleteClick}
+        className="element__delete-button" onClick={props.onDeleteClick}
       ><img
       src={trash}
       alt=" a drawing of a trash can"
