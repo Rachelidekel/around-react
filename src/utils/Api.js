@@ -48,19 +48,27 @@ class Api {
     });
   }
 
-  likeCard(cardId) {
+  changeLikeCardStatus(cardId, isLiked) {
     return this._customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       headers: this._headers,
-      method: "PUT",
-    });
+      method: isLiked ? 'DELETE' : 'PUT',
+    })
+      
   }
 
-  dislikeCard(cardId) {
-    return this._customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-      headers: this._headers,
-      method: "DELETE",
-    });
-  }
+  //likeCard(cardId) {
+    //return this._customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      //headers: this._headers,
+      //method: "PUT",
+   // });
+ // }
+
+  //dislikeCard(cardId) {
+    //return this._customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      //headers: this._headers,
+      //method: "DELETE",
+    //});
+  //}
 
   setUserAvatar(avatar) {
     return this._customFetch(`${this._baseUrl}/users/me/avatar`, {

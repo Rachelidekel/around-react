@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import trash from "../images/Delete_Icon.svg";
 import heart from "../images/Vector_heart.svg";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Card({ card, onCardClick, onDeleteClick }) {
-  const [likesCount, setLikesCount] = useState(0);
-
+function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   function handleClick() {
     onCardClick(card);
   }
+
+  function handleLikeClick() {
+    onCardLike(card);
+  }
+
+  function handleDeleteClick() {
+    onCardDelete(card);
+  }
+
+  const currentUser = React.useContext(CurrentUserContext);
+
+  const isOwn = card.owner._id === currentUser._id;
+  const cardDeleteButtonClassName = `element__delete-button ${
+    isOwn ? "element__delete-button" : "element_delete-button_disabled"
+  }`;
+
+  const isLiked = card.likes.some((user) => user._id === currentUser._id);
+  const cardLikeButtonClassName = `element__title-button ${
+    isLiked ? "element__title-button_active" : "element__title-button"
+  }`;
 
   return (
     <li className="element">
@@ -20,8 +39,8 @@ function Card({ card, onCardClick, onDeleteClick }) {
         />
         <button
           type="button"
-          className="element__delete-button"
-          onClick={onDeleteClick}
+          className={cardDeleteButtonClassName}
+          onClick={handleDeleteClick}
         >
           <img
             src={trash}
@@ -34,14 +53,18 @@ function Card({ card, onCardClick, onDeleteClick }) {
         <h2 className="element__title-name">{card.name}</h2>
 
         <div className="element__likes">
-          <button className="element__title-button" type="button">
+          <button
+            className={cardLikeButtonClassName}
+            type="button"
+            onClick={handleLikeClick}
+          >
             <img
               src={heart}
               alt="a drawing of a heart"
               className="element__title-heart"
             />
           </button>
-          <span className="element__likes-count">{likesCount}</span>
+          <span className="element__likes-count">{card.likes.length}</span>
         </div>
       </div>
     </li>
