@@ -3,7 +3,7 @@ import trash from "../images/Delete_Icon.svg";
 import heart from "../images/Vector_heart.svg";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Card({ card, onCardClick, onCardLike, onCardDelete }) {
+function Card({ card, onCardClick, onCardLike, onDeleteClick }) {
   function handleClick() {
     onCardClick(card);
   }
@@ -13,7 +13,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   }
 
   function handleDeleteClick() {
-    onCardDelete(card);
+    onDeleteClick(card);
   }
 
   const currentUser = React.useContext(CurrentUserContext);

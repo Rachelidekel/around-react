@@ -4,10 +4,17 @@ import pen from "../images/Vector_pen.svg";
 import plus from "../images/Vector_plus.svg";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Main({cards, onEditProfileClick, onAddPlaceClick, onEditAvatarClick, onCardClick, onCardLike, onCardDelete}) {
-  
+function Main({
+  cards,
+  onEditProfileClick,
+  onAddPlaceClick,
+  onEditAvatarClick,
+  onCardClick,
+  onCardLike,
+  onDeleteClick,
+}) {
   const currentUser = React.useContext(CurrentUserContext);
-  
+
   return (
     <main className="content">
       <section className="profile">
@@ -58,7 +65,7 @@ function Main({cards, onEditProfileClick, onAddPlaceClick, onEditAvatarClick, on
                 key={card._id}
                 onCardClick={onCardClick}
                 onCardLike={onCardLike}
-                onCardDelete={onCardDelete}
+                onDeleteClick={onDeleteClick}
               />
             );
           })}

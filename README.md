@@ -1,4 +1,4 @@
-# Project 10: Around The U.S.
+# Project 11: Around The U.S.
 
 # Overview
 
@@ -15,6 +15,7 @@ All the elements are displayed correctly on popular screen sizes. The main skill
 - Javascript DOM manipulation
 - Flat BEM file structure
 - Responsive and Adaptive development
+- Save data to the API
 
 **Figma**
 

@@ -1,13 +1,17 @@
 import React from "react";
 import close from "../images/Close_Icon.svg";
 
-function PopupWithForm({name, isOpen, onClose, title, buttonText, children}) {
+function PopupWithForm({
+  name,
+  onSubmit,
+  isOpen,
+  onClose,
+  title,
+  buttonText,
+  children,
+}) {
   return (
-    <div
-      className={`popup popup_type_${name} ${
-       isOpen ? "popup_opened" : ""
-      }`}
-    >
+    <div className={`popup popup_type_${name} ${isOpen ? "popup_opened" : ""}`}>
       <div className="popup__container">
         <button className="popup__close-button" type="button">
           <img
@@ -28,6 +32,7 @@ function PopupWithForm({name, isOpen, onClose, title, buttonText, children}) {
           action="submit"
           className="form popup__form"
           name={name}
+          onSubmit={onSubmit}
           noValidate
         >
           {children}

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-//import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import { api } from "../utils/Api";
 import CurrentUserContext from "../contexts/CurrentUserContext";
@@ -12,7 +11,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import DeletePopupForm from "./DeletePopupForm";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -70,8 +69,9 @@ function App() {
     setIsDeletePopupOpen(false);
   }
 
-  function handleDeleteClick() {
+  function handleDeleteClick(card) {
     setIsDeletePopupOpen(true);
+    setSelectedCard(card);
   }
 
   function handleUpdateUser({ name, about }) {
@@ -122,9 +122,9 @@ function App() {
       .catch(console.log);
   }
 
-  function handleAddPlaceSubmit(cardData) {
+  function handleAddPlaceSubmit(card) {
     api
-      .createCard(cardData.name, cardData.link)
+      .createCard(card)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
@@ -144,7 +144,6 @@ function App() {
           onCardClick={handleCardClick}
           onDeleteClick={handleDeleteClick}
           onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
         />
         <Footer />
 
@@ -168,7 +167,7 @@ function App() {
 
         <DeletePopupForm
           isOpen={isDeletePopupOpen}
-          //onCardDelete={handleCardDelete}
+          onSubmit={handleCardDelete}
           onClose={closeAllPopups}
         />
 

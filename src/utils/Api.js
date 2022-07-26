@@ -22,7 +22,7 @@ class Api {
     });
   }
 
-  setUserInfo(name, about) {
+  setUserInfo({ name, about }) {
     return this._customFetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
       method: "PATCH",
@@ -51,26 +51,11 @@ class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return this._customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       headers: this._headers,
-      method: isLiked ? 'DELETE' : 'PUT',
-    })
-      
+      method: isLiked ? "DELETE" : "PUT",
+    });
   }
 
-  //likeCard(cardId) {
-    //return this._customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-      //headers: this._headers,
-      //method: "PUT",
-   // });
- // }
-
-  //dislikeCard(cardId) {
-    //return this._customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-      //headers: this._headers,
-      //method: "DELETE",
-    //});
-  //}
-
-  setUserAvatar(avatar) {
+  setUserAvatar({ avatar }) {
     return this._customFetch(`${this._baseUrl}/users/me/avatar`, {
       headers: this._headers,
       method: "PATCH",
